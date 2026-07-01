@@ -1,0 +1,166 @@
+INFO:     Will watch for changes in these directories: ['C:\\Users\\winadmin\\Desktop\\DNS_v1']
+INFO:     Uvicorn running on http://0.0.0.0:5050 (Press CTRL+C to quit)
+INFO:     Started reloader process [5880] using StatReload
+C:\Users\winadmin\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\paramiko\pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+C:\Users\winadmin\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\paramiko\transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+2026-03-27 05:23:12,990 [dns_collector] INFO: Loaded 500 queries from DB
+2026-03-27 05:23:12,991 [remediation_engine] INFO: Remediation dedup: seeded 1 open tickets from DB
+INFO:     Started server process [6432]
+INFO:     Waiting for application startup.
+2026-03-27 05:23:13,029 [database] INFO: Database initialized: dns_monitor.db
+2026-03-27 05:23:13,031 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-27 05:23:13,031 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-27 05:23:13,034 [apscheduler.scheduler] INFO: Added job "scheduled_collection" to job store "default"
+2026-03-27 05:23:13,035 [apscheduler.scheduler] INFO: Added job "scheduled_analysis" to job store "default"
+2026-03-27 05:23:13,035 [apscheduler.scheduler] INFO: Scheduler started
+2026-03-27 05:23:13,041 [app] INFO: DNS Monitoring Platform started (LLM mode: manual, DB: 166680 stored queries)
+INFO:     Application startup complete.
+2026-03-27 05:23:14,049 [app] INFO: Initial DNS data collection completed
+INFO:     127.0.0.1:63421 - "GET /api/config HTTP/1.1" 200 OK
+2026-03-27 05:23:43,045 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:24:13 UTC)" (scheduled at 2026-03-27 05:23:43.031428+00:00)
+2026-03-27 05:23:43,651 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:23:43,651 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:24:13 UTC)" executed successfully
+2026-03-27 05:24:13,047 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:24:43 UTC)" (scheduled at 2026-03-27 05:24:13.031428+00:00)
+2026-03-27 05:24:13,047 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:25:13 UTC)" (scheduled at 2026-03-27 05:24:13.031720+00:00)
+2026-03-27 05:24:13,047 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:25:13 UTC)" executed successfully
+2026-03-27 05:24:13,836 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:24:13,836 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:24:43 UTC)" executed successfully
+2026-03-27 05:24:43,048 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:25:13 UTC)" (scheduled at 2026-03-27 05:24:43.031428+00:00)
+2026-03-27 05:24:43,796 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:24:43,796 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:25:13 UTC)" executed successfully
+2026-03-27 05:25:13,049 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:25:43 UTC)" (scheduled at 2026-03-27 05:25:13.031428+00:00)
+2026-03-27 05:25:13,049 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:26:13 UTC)" (scheduled at 2026-03-27 05:25:13.031720+00:00)
+2026-03-27 05:25:13,049 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:26:13 UTC)" executed successfully
+2026-03-27 05:25:13,538 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:25:13,538 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:25:43 UTC)" executed successfully
+2026-03-27 05:25:43,034 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:26:13 UTC)" (scheduled at 2026-03-27 05:25:43.031428+00:00)
+2026-03-27 05:25:43,532 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:25:43,532 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:26:13 UTC)" executed successfully
+2026-03-27 05:26:13,035 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:26:43 UTC)" (scheduled at 2026-03-27 05:26:13.031428+00:00)
+2026-03-27 05:26:13,035 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:27:13 UTC)" (scheduled at 2026-03-27 05:26:13.031720+00:00)
+2026-03-27 05:26:13,035 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:27:13 UTC)" executed successfully
+2026-03-27 05:26:13,647 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:26:13,647 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:26:43 UTC)" executed successfully
+2026-03-27 05:26:43,036 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:27:13 UTC)" (scheduled at 2026-03-27 05:26:43.031428+00:00)
+2026-03-27 05:26:43,705 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:26:43,705 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:27:13 UTC)" executed successfully
+2026-03-27 05:27:13,037 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:27:43 UTC)" (scheduled at 2026-03-27 05:27:13.031428+00:00)
+2026-03-27 05:27:13,038 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:28:13 UTC)" (scheduled at 2026-03-27 05:27:13.031720+00:00)
+2026-03-27 05:27:13,039 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:28:13 UTC)" executed successfully
+2026-03-27 05:27:13,409 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:27:13,409 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:27:43 UTC)" executed successfully
+2026-03-27 05:27:43,033 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:28:13 UTC)" (scheduled at 2026-03-27 05:27:43.031428+00:00)
+2026-03-27 05:27:43,817 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:27:43,817 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:28:13 UTC)" executed successfully
+2026-03-27 05:28:13,040 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:28:43 UTC)" (scheduled at 2026-03-27 05:28:13.031428+00:00)
+2026-03-27 05:28:13,040 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:29:13 UTC)" (scheduled at 2026-03-27 05:28:13.031720+00:00)
+2026-03-27 05:28:13,041 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:29:13 UTC)" executed successfully
+2026-03-27 05:28:13,559 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:28:13,559 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:28:43 UTC)" executed successfully
+2026-03-27 05:28:43,040 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:29:13 UTC)" (scheduled at 2026-03-27 05:28:43.031428+00:00)
+2026-03-27 05:28:43,786 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:28:43,786 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:29:13 UTC)" executed successfully
+2026-03-27 05:29:13,042 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:29:43 UTC)" (scheduled at 2026-03-27 05:29:13.031428+00:00)
+2026-03-27 05:29:13,042 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:30:13 UTC)" (scheduled at 2026-03-27 05:29:13.031720+00:00)
+2026-03-27 05:29:13,042 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:30:13 UTC)" executed successfully
+2026-03-27 05:29:13,536 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:29:13,537 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:29:43 UTC)" executed successfully
+2026-03-27 05:29:43,034 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:30:13 UTC)" (scheduled at 2026-03-27 05:29:43.031428+00:00)
+2026-03-27 05:29:43,806 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:29:43,806 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:30:13 UTC)" executed successfully
+2026-03-27 05:30:13,047 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:30:43 UTC)" (scheduled at 2026-03-27 05:30:13.031428+00:00)
+2026-03-27 05:30:13,048 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:31:13 UTC)" (scheduled at 2026-03-27 05:30:13.031720+00:00)
+2026-03-27 05:30:13,050 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:31:13 UTC)" executed successfully
+2026-03-27 05:30:13,529 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:30:13,530 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:30:43 UTC)" executed successfully
+2026-03-27 05:30:43,033 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:31:13 UTC)" (scheduled at 2026-03-27 05:30:43.031428+00:00)
+2026-03-27 05:30:43,686 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:30:43,686 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:31:13 UTC)" executed successfully
+2026-03-27 05:31:13,045 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:31:43 UTC)" (scheduled at 2026-03-27 05:31:13.031428+00:00)
+2026-03-27 05:31:13,045 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:32:13 UTC)" (scheduled at 2026-03-27 05:31:13.031720+00:00)
+2026-03-27 05:31:13,046 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:32:13 UTC)" executed successfully
+2026-03-27 05:31:13,852 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:31:13,852 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:31:43 UTC)" executed successfully
+2026-03-27 05:31:43,047 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:32:13 UTC)" (scheduled at 2026-03-27 05:31:43.031428+00:00)
+2026-03-27 05:31:43,680 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:31:43,680 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:32:13 UTC)" executed successfully
+INFO:     127.0.0.1:49202 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55233 - "GET /api/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61141 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59940 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58034 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57063 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57063 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57063 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57063 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57063 - "GET /api/workflows HTTP/1.1" 200 OK
+2026-03-27 05:32:13,041 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:32:43 UTC)" (scheduled at 2026-03-27 05:32:13.031428+00:00)
+2026-03-27 05:32:13,041 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:33:13 UTC)" (scheduled at 2026-03-27 05:32:13.031720+00:00)
+2026-03-27 05:32:13,041 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:33:13 UTC)" executed successfully
+2026-03-27 05:32:13,796 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:32:13,797 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:32:43 UTC)" executed successfully
+2026-03-27 05:32:32,668 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:61980 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59684 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49374 - "GET /api/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59343 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63153 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+2026-03-27 05:32:43,033 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:33:13 UTC)" (scheduled at 2026-03-27 05:32:43.031428+00:00)
+2026-03-27 05:32:43,639 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:32:43,639 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:33:13 UTC)" executed successfully
+2026-03-27 05:33:00,512 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:33:13,042 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:33:43 UTC)" (scheduled at 2026-03-27 05:33:13.031428+00:00)
+2026-03-27 05:33:13,042 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:34:13 UTC)" (scheduled at 2026-03-27 05:33:13.031720+00:00)
+2026-03-27 05:33:13,043 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:34:13 UTC)" executed successfully
+2026-03-27 05:33:13,435 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:33:13,435 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:33:43 UTC)" executed successfully
+2026-03-27 05:33:32,918 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:65267 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51885 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65205 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56094 - "GET /api/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62916 - "GET /api/agents/results HTTP/1.1" 200 OK
+2026-03-27 05:33:43,037 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:34:13 UTC)" (scheduled at 2026-03-27 05:33:43.031428+00:00)
+2026-03-27 05:33:43,602 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:33:43,602 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:34:13 UTC)" executed successfully
+2026-03-27 05:33:52,328 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:34:13,039 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:34:43 UTC)" (scheduled at 2026-03-27 05:34:13.031428+00:00)
+2026-03-27 05:34:13,039 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:35:13 UTC)" (scheduled at 2026-03-27 05:34:13.031720+00:00)
+2026-03-27 05:34:13,040 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:35:13 UTC)" executed successfully
+2026-03-27 05:34:13,562 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:34:13,562 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:34:43 UTC)" executed successfully
+2026-03-27 05:34:18,904 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:34:43,042 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:35:13 UTC)" (scheduled at 2026-03-27 05:34:43.031428+00:00)
+INFO:     127.0.0.1:61504 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49531 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58278 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63383 - "GET /api/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59147 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+2026-03-27 05:34:43,654 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:34:43,654 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:35:13 UTC)" executed successfully
+2026-03-27 05:35:03,759 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:35:13,049 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:35:43 UTC)" (scheduled at 2026-03-27 05:35:13.031428+00:00)
+2026-03-27 05:35:13,049 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:36:13 UTC)" (scheduled at 2026-03-27 05:35:13.031720+00:00)
+2026-03-27 05:35:13,050 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:36:13 UTC)" executed successfully
+2026-03-27 05:35:13,482 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:35:13,482 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:35:43 UTC)" executed successfully
+2026-03-27 05:35:18,802 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:35:33,153 [httpx] INFO: HTTP Request: POST http://172.19.0.4:11434/api/chat "HTTP/1.1 200 OK"
+2026-03-27 05:35:43,033 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:36:13 UTC)" (scheduled at 2026-03-27 05:35:43.031428+00:00)
+2026-03-27 05:35:43,472 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:35:43,472 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:36:13 UTC)" executed successfully
+INFO:     127.0.0.1:55893 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53364 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61752 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62915 - "GET /api/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50582 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50582 - "GET /api/remediation/tickets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50582 - "GET /api/remediation/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50582 - "GET /api/config HTTP/1.1" 200 OK
+2026-03-27 05:36:13,048 [apscheduler.executors.default] INFO: Running job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:36:43 UTC)" (scheduled at 2026-03-27 05:36:13.031428+00:00)
+2026-03-27 05:36:13,049 [apscheduler.executors.default] INFO: Running job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:37:13 UTC)" (scheduled at 2026-03-27 05:36:13.031720+00:00)
+2026-03-27 05:36:13,049 [apscheduler.executors.default] INFO: Job "scheduled_analysis (trigger: interval[0:01:00], next run at: 2026-03-27 05:37:13 UTC)" executed successfully
+2026-03-27 05:36:13,871 [app] INFO: Scheduled DNS data collection completed
+2026-03-27 05:36:13,872 [apscheduler.executors.default] INFO: Job "scheduled_collection (trigger: interval[0:00:30], next run at: 2026-03-27 05:36:43 UTC)" executed successfully

@@ -1,0 +1,19 @@
+C:\Users\winadmin\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\paramiko\pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+C:\Users\winadmin\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\paramiko\transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+2026-03-26 07:55:18,544 [dns_collector] INFO: Loaded 180 queries from DB
+INFO:     Started server process [16244]
+INFO:     Waiting for application startup.
+2026-03-26 07:55:18,586 [database] INFO: Database initialized: dns_monitor.db
+2026-03-26 07:55:18,598 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-26 07:55:18,602 [apscheduler.scheduler] INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-26 07:55:18,607 [apscheduler.scheduler] INFO: Added job "scheduled_collection" to job store "default"
+2026-03-26 07:55:18,609 [apscheduler.scheduler] INFO: Added job "scheduled_analysis" to job store "default"
+2026-03-26 07:55:18,610 [apscheduler.scheduler] INFO: Scheduler started
+2026-03-26 07:55:19,187 [app] INFO: DNS Monitoring Platform started (LLM mode: manual, DB: 142650 stored queries)
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('0.0.0.0', 5050): [winerror 10048] only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+2026-03-26 07:55:19,196 [apscheduler.scheduler] INFO: Scheduler has been shut down
+INFO:     Application shutdown complete.

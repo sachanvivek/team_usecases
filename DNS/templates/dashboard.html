@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS AI Monitoring Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">DNS</div>
+            <span class="logo-text">AI Monitor</span>
+        </div>
+        <ul class="nav-links">
+            <li class="active" data-panel="overview"><span class="nav-icon">&#9632;</span> Overview</li>
+            <li data-panel="chat"><span class="nav-icon">&#9993;</span> DNS Assistant</li>
+            <li data-panel="workflows"><span class="nav-icon">&#9654;</span> Workflows</li>
+            <li data-panel="agents"><span class="nav-icon">&#9881;</span> Agents</li>
+            <li data-panel="dns-queries"><span class="nav-icon">&#8644;</span> DNS Queries</li>
+            <li data-panel="analytics"><span class="nav-icon">&#9733;</span> Analytics</li>
+            <li data-panel="remediation"><span class="nav-icon">&#9889;</span> Remediation</li>
+            <li data-panel="local-dns"><span class="nav-icon">&#9858;</span> Local DNS</li>
+            <li data-panel="azure"><span class="nav-icon">&#9729;</span> Azure DNS</li>
+            <li data-panel="settings"><span class="nav-icon">&#9881;</span> Settings</li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header class="top-bar">
+            <h1 id="page-title">Overview</h1>
+            <div class="top-bar-actions">
+                <span class="status-indicator" id="system-status">System: Loading...</span>
+                <button class="btn btn-primary" id="btn-collect">Collect DNS</button>
+                <div class="llm-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="llm-auto-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span id="llm-mode-label" class="toggle-label">Manual</span>
+                </div>
+                <button class="btn btn-accent" id="btn-run-agents">Run Analysis</button>
+            </div>
+        </header>
+
+        <!-- Overview Panel -->
+        <section id="panel-overview" class="panel active">
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <div class="kpi-label">Health Score</div>
+                    <div class="kpi-value" id="kpi-health">--</div>
+                    <div class="kpi-sub" id="kpi-health-status">Loading</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Avg Response</div>
+                    <div class="kpi-value" id="kpi-avg-ms">--</div>
+                    <div class="kpi-sub">milliseconds</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Success Rate</div>
+                    <div class="kpi-value" id="kpi-success">--</div>
+                    <div class="kpi-sub">percent</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Queries</div>
+                    <div class="kpi-value" id="kpi-total">--</div>
+                    <div class="kpi-sub">collected</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Response Time by Server</h3>
+                    <canvas id="chart-server-response"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Query Status Distribution</h3>
+                    <canvas id="chart-status-dist"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Executive Summary</h3>
+                <div id="executive-summary" class="summary-text">Run agents to generate AI-powered analysis...</div>
+            </div>
+
+            <div class="card">
+                <h3>LLM Orchestrator Narrative</h3>
+                <div id="orchestrator-narrative" class="summary-text" style="white-space: pre-wrap;">Run agents to generate the Central Brain root cause analysis...</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Active Alerts</h3>
+                    <div id="active-alerts" class="alert-list">No alerts yet</div>
+                </div>
+                <div class="card">
+                    <h3>Role-Based Views</h3>
+                    <div class="role-tabs">
+                        <button class="role-tab active" data-role="ops">Ops</button>
+                        <button class="role-tab" data-role="network">Network</button>
+                        <button class="role-tab" data-role="security">Security</button>
+                        <button class="role-tab" data-role="leadership">Leadership</button>
+                    </div>
+                    <div id="role-view-content" class="role-content">Select a role view...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Assistant Panel -->
+        <section id="panel-chat" class="panel">
+            <div class="chat-layout">
+                <div class="chat-main">
+                    <div class="card chat-card">
+                        <h3>DNS Operations Assistant</h3>
+                        <div class="chat-hint">
+                            Ask me to add, modify, or delete DNS records on the internal BIND server (172.19.0.6) or Azure DNS. I'll create a ServiceNow CR and handle the full workflow automatically.
+                        </div>
+                        <div id="chat-messages" class="chat-messages">
+                            <div class="chat-message assistant">
+                                <div class="chat-bubble">
+                                    Hello! I'm your DNS Operations Assistant. I manage records on your internal BIND9 server (172.19.0.6) and Azure DNS.<br><br>
+                                    <strong>Add</strong> - Create new DNS records<br>
+                                    <strong>Modify</strong> - Update existing DNS records<br>
+                                    <strong>Delete</strong> - Remove DNS records<br>
+                                    <strong>Query</strong> - Check current records on the server<br><br>
+                                    Each change will automatically create a ServiceNow Change Request. Once approved, I'll run pre-checks, implement the change, run post-checks, and close the CR.<br><br>
+                                    What would you like to do?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-row">
+                            <input type="text" id="chat-input" class="chat-input" placeholder="e.g. Add an A record for web01.example.com pointing to 10.0.1.50" />
+                            <button class="btn btn-primary" id="btn-chat-send">Send</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-sidebar">
+                    <div class="card">
+                        <h3>Pending Action</h3>
+                        <div id="chat-pending-action" class="pending-action-content">No pending action</div>
+                    </div>
+                    <div class="card">
+                        <h3>Managed Zones</h3>
+                        <div id="chat-managed-zones" class="managed-zones-list">Loading...</div>
+                    </div>
+                    <div class="card">
+                        <h3>Recent Changes</h3>
+                        <div id="chat-recent-changes" class="recent-changes-list">No recent changes</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflows Panel -->
+        <section id="panel-workflows" class="panel">
+            <div class="card">
+                <h3>Active Workflows</h3>
+                <div id="active-workflows-list" class="workflows-list">No active workflows</div>
+            </div>
+            <div class="card">
+                <h3>Workflow Detail</h3>
+                <div id="workflow-detail" class="workflow-detail-content">Select a workflow to see details...</div>
+            </div>
+            <div class="card">
+                <h3>All Workflows</h3>
+                <div id="all-workflows-list" class="workflows-list">No workflows yet</div>
+            </div>
+        </section>
+
+        <!-- Agents Panel -->
+        <section id="panel-agents" class="panel">
+            <div class="card">
+                <h3>Agent Status & Results</h3>
+                <div id="agents-grid" class="agents-grid"></div>
+            </div>
+            <div class="card">
+                <h3>Agent Detail</h3>
+                <div id="agent-detail" class="agent-detail-content">Select an agent above to see detailed results...</div>
+            </div>
+        </section>
+
+        <!-- DNS Queries Panel -->
+        <section id="panel-dns-queries" class="panel">
+            <div class="card">
+                <h3>Recent DNS Queries</h3>
+                <div class="table-container">
+                    <table id="dns-query-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Server</th>
+                                <th>Domain</th>
+                                <th>Type</th>
+                                <th>Response (ms)</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dns-query-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Panel -->
+        <section id="panel-analytics" class="panel">
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Response Time Trend</h3>
+                    <canvas id="chart-response-trend"></canvas>
+                </div>
+                <div class="card">
+                    <h3>Server Performance Comparison</h3>
+                    <canvas id="chart-server-perf"></canvas>
+                </div>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Experience Score</h3>
+                    <div id="analytics-experience" class="metric-display">--</div>
+                </div>
+                <div class="card">
+                    <h3>CX Score</h3>
+                    <div id="analytics-cx" class="metric-display">--</div>
+                </div>
+                <div class="card">
+                    <h3>Anomalies</h3>
+                    <div id="analytics-anomalies" class="metric-display">0</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>AI Analysis Insights</h3>
+                <div id="analytics-insights" class="insights-container">Run agents to see AI insights...</div>
+            </div>
+        </section>
+
+        <!-- Local DNS Server Panel -->
+        <section id="panel-local-dns" class="panel">
+            <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Server</div>
+                    <div class="kpi-value" id="local-dns-host" style="font-size:20px;">--</div>
+                    <div class="kpi-sub">BIND9 DNS Server</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Status</div>
+                    <div class="kpi-value" id="local-dns-status-badge" style="font-size:20px;">--</div>
+                    <div class="kpi-sub" id="local-dns-version">Loading...</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Zones</div>
+                    <div class="kpi-value" id="local-dns-zone-count">--</div>
+                    <div class="kpi-sub">authoritative</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Server Actions</h3>
+                <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                    <button class="btn btn-primary" id="btn-local-dns-refresh" onclick="loadLocalDNS()">Refresh Status</button>
+                    <button class="btn btn-accent" id="btn-setup-zones" onclick="setupLocalZones()">Setup Authoritative Zones</button>
+                </div>
+                <div id="local-dns-action-result"></div>
+            </div>
+
+            <div class="card">
+                <h3>Zone Records</h3>
+                <div style="margin-bottom: 12px;">
+                    <select id="local-dns-zone-select" class="chat-input" style="max-width:300px;" onchange="loadZoneRecords()">
+                        <option value="">Select a zone...</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table id="local-dns-records-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>TTL</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="local-dns-records-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Quick DNS Query</h3>
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <input type="text" id="local-dns-query-fqdn" class="chat-input" style="flex:1;" placeholder="e.g. web01.example.com" />
+                    <select id="local-dns-query-type" class="chat-input" style="width:100px;">
+                        <option value="A">A</option>
+                        <option value="AAAA">AAAA</option>
+                        <option value="CNAME">CNAME</option>
+                        <option value="MX">MX</option>
+                        <option value="TXT">TXT</option>
+                        <option value="NS">NS</option>
+                        <option value="SOA">SOA</option>
+                        <option value="PTR">PTR</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="queryLocalDNS()">Query</button>
+                </div>
+                <div id="local-dns-query-result" style="font-size:14px;"></div>
+            </div>
+        </section>
+
+        <!-- Remediation Panel -->
+        <section id="panel-remediation" class="panel">
+            <div class="kpi-row" style="grid-template-columns: repeat(5, 1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Tickets</div>
+                    <div class="kpi-value" id="rem-total">0</div>
+                    <div class="kpi-sub">auto-generated</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Incidents</div>
+                    <div class="kpi-value" id="rem-incidents">0</div>
+                    <div class="kpi-sub">created</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Changes</div>
+                    <div class="kpi-value" id="rem-changes">0</div>
+                    <div class="kpi-sub">created</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Active</div>
+                    <div class="kpi-value" id="rem-active">0</div>
+                    <div class="kpi-sub">in progress</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Auto-Remediation</div>
+                    <div class="kpi-value" id="rem-auto-status" style="font-size:18px;">--</div>
+                    <div class="kpi-sub" id="rem-auto-sub">loading</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Remediation Tickets</h3>
+                <div class="table-container">
+                    <table id="remediation-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>SNOW #</th>
+                                <th>Agent</th>
+                                <th>Action</th>
+                                <th>Priority</th>
+                                <th>Type</th>
+                                <th>Target</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="remediation-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Root Cause Analysis</h3>
+                    <div id="rem-root-cause" class="summary-text" style="white-space: pre-wrap;">Run agents to generate root cause analysis...</div>
+                </div>
+                <div class="card">
+                    <h3>Correlated Insights</h3>
+                    <div id="rem-insights" class="insights-container">Run agents to see correlated insights...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Azure Panel -->
+        <section id="panel-azure" class="panel">
+            <div class="card">
+                <h3>Azure DNS Integration</h3>
+                <div id="azure-status" class="azure-info">Loading Azure DNS status...</div>
+            </div>
+            <div class="card">
+                <h3>Azure DNS Zones</h3>
+                <div id="azure-zones" class="zones-list">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Settings Panel -->
+        <section id="panel-settings" class="panel">
+            <div class="card">
+                <h3>Configuration</h3>
+                <div id="config-display" class="config-grid">Loading configuration...</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

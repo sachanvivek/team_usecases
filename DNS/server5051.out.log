@@ -1,0 +1,6 @@
+INFO:     127.0.0.1:51407 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /api/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56373 - "GET /api/dns/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51407 - "GET /api/dns/history?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56885 - "GET /api/agents/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56885 - "GET /api/llm/mode HTTP/1.1" 200 OK
