@@ -1,0 +1,26 @@
+forecast_runs
+CREATE TABLE forecast_runs (
+    run_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    start_time DATETIME NOT NULL,
+    vpu_id BIGINT,
+    resource_type VARCHAR(50) NOT NULL,
+    inserted_by VARCHAR(100) NOT NULL,
+    inserted_date DATETIME NOT NULL,
+    updated_by VARCHAR(100) NOT NULL,
+    updated_date DATETIME NOT NULL
+);
+
+forecast_results
+CREATE TABLE forecast_results (
+    run_id BIGINT NOT NULL,
+    dop DATE NOT NULL,             -- forecast date
+    alg VARCHAR(50) NOT NULL,      -- algorithm/model name
+    p_avg_usage DECIMAL(10,2) NOT NULL, -- predicted average usage
+    inserted_by VARCHAR(100) NOT NULL,
+    inserted_date DATETIME NOT NULL,
+    updated_by VARCHAR(100) NOT NULL,
+    updated_date DATETIME NOT NULL,
+    FOREIGN KEY (run_id) REFERENCES forecast_runs(run_id)
+);
+
+CREATE INDEX idx_run_dop ON forecast_results(run_id, dop);[For query by both run_id and dop]
